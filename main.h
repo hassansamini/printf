@@ -25,5 +25,5 @@ int StringPrint(va_list kind);
 int intPrint(va_list kind);
 int BinaryPrint(va_list n);
 int DecPrint(va_list kind);
-
+int PerPrint(va_list kind);
 #endif
