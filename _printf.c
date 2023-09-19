@@ -1,9 +1,8 @@
 #include "main.h"
 /**
- *
- *
- *
- *
+ *_printf - function that prints all types
+ *@format: the format string
+ *Return: returns the number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -20,27 +19,23 @@ int _printf(const char *format, ...)
 	};
 
 	va_start(args, format);
-	if (*format == '%')
-	{
-		if (format == NULL || format[1] == '\0')
+		if (format == NULL || (format[0] == '%' format[1] == '\0'))
 			return (-1);
-
+Here:
 		while (format[i] != '\0')
 		{
 			x = 13;
-			while (x >=0)
+			while (x >= 0)
 			{
-				if (types[x].n[0] == format[i] && types[x].n[1] == format[i + 1 ])
-				{
+			if (types[x].n[0] == format[i] && types[x].n[1] == format[i + 1])
+			{
 					lenght += types[x].f(args);
 					i = i + 2;
-					break;
+					goto Here;
 				}
 				x--;
 			}
-			if (x >= 0)
-				continue;
-			_putchar(format[i]);
+			_putchar('%');
 			lenght++;
 			i++;
 		}
