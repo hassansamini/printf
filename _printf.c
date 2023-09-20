@@ -10,7 +10,7 @@ int (*Functions(const char *format))(va_list)
 	layout types[] = {
 		{"s", StringPrint},
 		{"c", CharPrint},
-		{"i", intPrint},
+		{"i", DecPrint},
 		{"d", DecPrint},
 		{"b", BinaryPrint},
 		{NULL, NULL}
