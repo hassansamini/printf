@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- *
- *
- *
+ *StringPrint - prints a string
+ *@kind: int
+ *Return: returns i
  */
 int StringPrint(va_list kind)
 {

@@ -1,9 +1,8 @@
 #include "main.h"
 /**
- *
- *
- *
- *
+ *DecPrint - prints a decimal
+ *@kind: int
+ *Return: returns i
  */
 int DecPrint(va_list kind)
 {
@@ -27,6 +26,7 @@ int DecPrint(va_list kind)
 	while (multi > 0)
 	{
 		int dig = num / multi;
+
 		_putchar(dig + '0');
 		num -= dig * multi;
 		multi /= 10;

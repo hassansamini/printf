@@ -6,8 +6,7 @@
 #include <limits.h>
 #include <unistd.h>
 
-/*
- * Header file for all prototypes
+/**
  * struct structure - the structure
  * @n: char
  * @f: int
