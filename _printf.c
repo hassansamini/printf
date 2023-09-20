@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
   *Function - function that help
   *@format: specifier
@@ -45,7 +44,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (; format[a]; a++)
 	{
-		for (;format[a] != '%' && format[a]; a++)
+		for (; format[a] != '%' && format[a]; a++)
 		{
 			_putchar(format[a]);
 			length++;
