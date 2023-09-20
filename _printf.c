@@ -1,42 +1,78 @@
 #include "main.h"
+
 /**
- * _printf - is a function that selects the correct function to print.
- * @format: identifier to look for.
- * Return: the length of the string.
- */
+  *Function - function that help
+  *@format: specifier
+  *Return: returning null
+  */
+int (*Functions(const char *format))(va_list)
+{
+	unsigned int i = 0;
+	layout types[] = {
+		{"c", CharPrint},
+		{"s", StringPrint},
+		{"i", intPrint},
+		{"d", DecPrint},
+		{NULL, NULL}
+	};
+
+	while (types[i].n)
+	{
+		if (types[i].n[0] == (*format))
+		{
+			return (types[i].f);
+		}
+		i++;
+	}
+	return ('\0');
+}
+
+/**
+  *_printf - function that prints all types
+  *@format: specifier
+  *Return: the length of the string
+  */
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int length = 0, i = 0, x;
-	layout types[] = {
-		{"%s", StringPrint}, {"%c", CharPrint},
-		{"%%", PerPrint},
-		{"%i", intPrint}, {"%d", DecPrint},
-	};
+	unsigned int a = 0, length = 0;
+	int (*f)(va_list);
 
-	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-
-	while (format[i] != '\0')
+	if (format == NULL)
 	{
-		x = 13;
-		while (x >= 0)
+		return (-1);
+	}
+	va_start(args, format);
+	for (; format[a]; a++)
+	{
+		for (;format[a] != '%' && format[a]; a++)
 		{
-			if (types[x].n[0] == format[i] && types[x].n[1] == format[i + 1])
-			{
-				length += types[x].f(args);
-				i = i + 2;
-				break;
-			}
-			x--;
+			_putchar(format[a]);
+			length++;
 		}
-		if (x >= 0)
-		continue;
-		_putchar(format[i]);
+		if (format[a] == '\0')
+		{
+			return (length);
+		}
+		f = Functions(&format[a + 1]);
+		if (f != NULL)
+		{
+			length += f(args);
+			a += 2;
+			continue;
+		}
+		if (!format[a + 1])
+		{
+			return (-1);
+		}
+		_putchar(format[a]);
 		length++;
-		i++;
+		if (format[a + 1] == '%')
+		{
+			a += 2;
+		}
 	}
 	va_end(args);
 	return (length);
 }
+
