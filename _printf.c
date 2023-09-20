@@ -8,10 +8,11 @@ int (*Functions(const char *format))(va_list)
 {
 	unsigned int i = 0;
 	layout types[] = {
-		{"c", CharPrint},
 		{"s", StringPrint},
+		{"c", CharPrint},
 		{"i", intPrint},
 		{"d", DecPrint},
+		{"b", BinaryPrint},
 		{NULL, NULL}
 	};
 
@@ -42,7 +43,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
 	va_start(args, format);
-	for (; format[a]; a++)
+	while (format[a])
 	{
 		for (; format[a] != '%' && format[a]; a++)
 		{
@@ -69,6 +70,10 @@ int _printf(const char *format, ...)
 		if (format[a + 1] == '%')
 		{
 			a += 2;
+		}
+		else
+		{
+			a++;
 		}
 	}
 	va_end(args);
