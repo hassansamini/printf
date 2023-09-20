@@ -6,31 +6,43 @@
  */
 int DecPrint(va_list kind)
 {
-	int x = va_arg(kind, int);
-	int num = x, temporary = num;
-	int i = 0;
-	int multi = 1;
+	int lenght, p, y, num, digit, x;
+	int count = 0;
 
-	if (x < 0)
+	x = va_arg(kind, int);
+	if (x != 0)
 	{
-		_putchar('-');
-		num = -num;
-		i++;
+		if (x < 0)
+		{
+			_putchar('-');
+			count++;
+		}
+		num = x;
+		lenght = 0;
+		while (num != 0)
+		{
+			num /= 10;
+			lenght++;
+		}
+		p = 1;
+		for (y = 1; y <= lenght - 1; y++)
+			p *= 10;
+		for (y = 1; y <= lenght; y++)
+		{
+			digit = x / p;
+			if (x < 0)
+				_putchar((digit * -1) + 48);
+			else
+				_putchar(digit + '0');
+			count++;
+			x -= digit * p;
+			p /= 10;
+		}
 	}
-
-	while (temporary / 10 != 0)
+	else
 	{
-		multi *= 10;
-		temporary /= 10;
+		_putchar('0');
+		return (1);
 	}
-	while (multi > 0)
-	{
-		int dig = num / multi;
-
-		_putchar(dig + '0');
-		num -= dig * multi;
-		multi /= 10;
-		i++;
-	}
-	return (i);
+	return (count);
 }
