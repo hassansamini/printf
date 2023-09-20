@@ -1,8 +1,8 @@
 #include "main.h"
 /**
-  * Functions - function that help
-  * @format: specifier
-  * Return: returning null
+  *Function - function that help
+  *@format: specifier
+  *Return: returning null
   */
 int (*Functions(const char *format))(va_list)
 {
@@ -27,9 +27,9 @@ int (*Functions(const char *format))(va_list)
 }
 
 /**
-  * _printf - function that prints all types
-  * @format: specifier
-  * Return: the length of the string
+  *_printf - function that prints all types
+  *@format: specifier
+  *Return: the length of the string
   */
 int _printf(const char *format, ...)
 {
@@ -74,4 +74,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (length);
 }
-
