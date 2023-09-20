@@ -68,15 +68,10 @@ int _printf(const char *format, ...)
 		_putchar(format[a]);
 		length++;
 		if (format[a + 1] == '%')
-		{
 			a += 2;
-		}
 		else
-		{
 			a++;
-		}
 	}
 	va_end(args);
 	return (length);
 }
-
