@@ -11,8 +11,8 @@ int (*Functions(const char *format))(va_list)
 		{"s", StringPrint}, {"x", hexPrint},
 		{"c", CharPrint}, {"X", HexPrint},
 		{"i", DecPrint}, {"p", PointerPrint},
-		{"d", DecPrint},
-		{"b", BinaryPrint},
+		{"d", DecPrint}, {"u", UnsignedPrint},
+		{"b", BinaryPrint}, {"o", OctalPrint},
 		{NULL, NULL}
 	};
 

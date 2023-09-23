@@ -30,4 +30,6 @@ int PointerPrint(va_list kind);
 int HexPrint(va_list kind);
 int hexPrint(va_list kind);
 int HexPrint_Pointer(unsigned long int number);
+int OctalPrint(va_list kind);
+int UnsignedPrint(va_list kind);
 #endif
