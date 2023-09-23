@@ -26,4 +26,8 @@ int BinaryPrint(va_list n);
 int DecPrint(va_list kind);
 int PerPrint(va_list kind);
 int (*Functions(const char *format))(va_list);
+int PointerPrint(va_list kind);
+int HexPrint(va_list kind);
+int hexPrint(va_list kind);
+int HexPrint_Pointer(unsigned long int number);
 #endif

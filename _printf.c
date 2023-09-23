@@ -8,9 +8,9 @@ int (*Functions(const char *format))(va_list)
 {
 	unsigned int i = 0;
 	layout types[] = {
-		{"s", StringPrint},
-		{"c", CharPrint},
-		{"i", DecPrint},
+		{"s", StringPrint}, {"x", hexPrint},
+		{"c", CharPrint}, {"X", HexPrint},
+		{"i", DecPrint}, {"p", PointerPrint},
 		{"d", DecPrint},
 		{"b", BinaryPrint},
 		{NULL, NULL}
